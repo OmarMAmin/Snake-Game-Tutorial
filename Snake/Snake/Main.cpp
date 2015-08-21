@@ -12,14 +12,12 @@ void SnakeDraw()
 		for (int  j = 0; j < dim; j++)
 		{
 			// when to draw the boundary
-			if (i == 0)
-				cout << "a";
-			else if (i == dim - 1)
-				cout << "b";
-			else if(j == 0)
-				cout << "c";
-			else if (j == dim - 1)
-				cout << "d";
+			if (i == 0 || i == dim - 1 || j == 0 || j == dim - 1)
+				cout << "#";
+			else if (i == 9 && j == 8
+				|| i == 9 && j == 9
+				|| i == 9 && j == 10)
+				cout << "*";
 			else
 				cout << " ";
 		}
