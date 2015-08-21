@@ -28,3 +28,7 @@ Snake/Snake.sdf
 *.exe
 *.out
 *.app
+Snake/Snake.sln
+Snake/Snake/Snake.vcxproj
+Snake/Snake/Snake.vcxproj.filters
+Snake/Snake/Debug/
