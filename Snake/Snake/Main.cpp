@@ -1,6 +1,8 @@
 #include <iostream>
 #include <conio.h>
 #include <math.h>
+#include <thread>
+#include <future>
 
 using namespace std;
 
@@ -89,10 +91,31 @@ void MoveNodeNormally(Node & node);
 void InitializeFood(World &w);
 
 bool SnakeEatFood(World &w);
+
+void delay()
+{
+	for(int i =0;i<10000;i++)
+	{
+		for(int j =0;j<20000;j++)
+			;
+	}
+}
+
+void GetDirectionThread(char * c)
+{
+	*c = _getch();
+	char choice = *c;
+	while (choice != 'a' && choice != 's'
+		&& choice != 'w' && choice != 'd')
+	{
+		cout << endl << "Not Valid Direction, Please Enter a,s,d,w only" << endl;
+	}
+}
+
 int main()
 {
 	World w;
-	char choice = 's';
+	char choice ='d';
 	InitializeSnake(w.snake);
 	InitializeFood(w);
 	bool gameover = false;
@@ -102,12 +125,13 @@ int main()
 		InitializeWorldOfSnake(w);
 		DrawWorld(w);
 		cout << endl << endl << "Enter a,s,d,w to move left,down,right,up respectively"<<endl;
-		choice = _getch();
-		while (choice != 'a' && choice != 's'
-			&& choice != 'w' && choice != 'd')
-		{
-			cout << endl << "Not Valid Direction, Please Enter a,s,d,w only" << endl;
-		}
+
+		char j = choice;
+		thread x(GetDirectionThread, &choice);
+
+		delay();
+		x.detach();
+
 		gameover = MoveSnake(w.snake,GetDirection(choice));
 		if (SnakeEatFood(w))
 			w.snake.size++;
