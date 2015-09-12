@@ -4,6 +4,13 @@
 #include <thread>
 #include <future>
 
+#include <stdlib.h>
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;     // sleep_for, sleep_until
+using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
+using std::chrono::system_clock;
+
 using namespace std;
 
 #define dim 20
@@ -129,7 +136,7 @@ int main()
 		char j = choice;
 		thread x(GetDirectionThread, &choice);
 
-		delay();
+		sleep_for(400ms);
 		x.detach();
 
 		gameover = MoveSnake(w.snake,GetDirection(choice));

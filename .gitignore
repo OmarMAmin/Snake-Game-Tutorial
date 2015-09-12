@@ -33,3 +33,6 @@ Snake/Snake/Snake.vcxproj
 Snake/Snake/Snake.vcxproj.filters
 Snake/Snake/Debug/
 Snake/Release/
+*/Release/
+*/Debug/
+Snake/Snake/Release/
